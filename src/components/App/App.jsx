@@ -37,6 +37,7 @@ function App() {
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [isResOk, setIsResOk] = React.useState(false);
+  const [isProfileEditActive, setIsProfileEditActive] = React.useState(false);
 
   // Регистрация
   function handleRegister(name, email, password) {
@@ -96,11 +97,16 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData);
         setIsResOk(true);
+        setIsProfileEditActive(false);
       })
       .catch((err) => {
         setIsResOk(false);
         console.err(err);
       });
+  }
+
+  function handleEditProfileActive() {
+    setIsProfileEditActive(true);
   }
 
   function handleSaveMovies(movie, isSave, savedMovie) {
@@ -170,9 +176,11 @@ function App() {
                 <ProtectedRouteElement
                   loggedIn={loggedIn}
                   element={Profile}
-                  onSignOut={handleSignOut}
                   onEditUserInfo={handleEditUserInfo}
+                  onEditProfileActive={handleEditProfileActive}
+                  isProfileEditActive={isProfileEditActive}
                   isResOk={isResOk}
+                  onSignOut={handleSignOut}
                 />
               }
             />

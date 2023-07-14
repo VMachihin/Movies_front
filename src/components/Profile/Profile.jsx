@@ -7,7 +7,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './Profile.css';
 
-function Profile({ onUpdateUser, onSignOut, isResOk, onEditProfileActive, editingActive }) {
+function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isResOk, onSignOut }) {
   const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation({});
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -21,7 +21,7 @@ function Profile({ onUpdateUser, onSignOut, isResOk, onEditProfileActive, editin
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateUser(values);
+    onEditUserInfo(values);
   }
 
   return (
@@ -44,7 +44,7 @@ function Profile({ onUpdateUser, onSignOut, isResOk, onEditProfileActive, editin
               maxLength="40"
               value={values.name || ''}
               onChange={handleChange}
-              disabled={!editingActive}
+              disabled={!isProfileEditActive}
             />
 
             <span className={`profile__input-textError ${!isValid && `profile__input-textError_active`}`}>{errors.name}</span>
@@ -67,7 +67,7 @@ function Profile({ onUpdateUser, onSignOut, isResOk, onEditProfileActive, editin
               maxLength="40"
               value={values.email || ''}
               onChange={handleChange}
-              disabled={!editingActive}
+              disabled={!isProfileEditActive}
             />
 
             <span className={`profile__input-textError ${!isValid && `profile__input-textError_active`}`}>{errors.email}</span>
@@ -75,16 +75,18 @@ function Profile({ onUpdateUser, onSignOut, isResOk, onEditProfileActive, editin
 
           <span className={`profile__text-statusReq ${isResOk && `profile__text-statusReq_active`}`}>Данные профиля успешно обновлены</span>
 
-          {editingActive ? (
+          {isProfileEditActive ? (
             <button
-              className={`profile__edit-save ${editingActive && `profile__edit-save_show`} ${!isValid && `profile__edit-save_disabled`}`}
+              className={`profile__edit-save ${isProfileEditActive && `profile__edit-save_show`} ${
+                !isValid && `profile__edit-save_disabled`
+              }`}
               disabled={!isValid}
             >
               Сохранить
             </button>
           ) : (
             <>
-              <button type="button" className="profile__edit" onClick={(e) => onEditProfileActive(e)}>
+              <button type="button" className="profile__edit" onClick={onEditProfileActive}>
                 Редактировать
               </button>
 
