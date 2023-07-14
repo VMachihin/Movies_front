@@ -4,4 +4,4 @@
 
 ## [Pull request](https://github.com/VMachihin/movies-explorer-frontend/pull/3)
 
-## [Frontend](movies.lib.nomoredomains.rocks.vitmach.ru)
+## [Frontend](https://movies.lib.nomoredomains.rocks.vitmach.ru)
