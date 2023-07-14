@@ -28,7 +28,7 @@ function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isR
     <section className="profile">
       <div className="container">
         <h3 className="profile__title">{`Привет, ${currentUser.name}!`}</h3>
-        <form className="profile__form" noValidate onSubmit={handleSubmit}>
+        <form className="profile__form" noValidate onSubmit={(e) => handleSubmit(e)}>
           <div className="profile__input-wrapper">
             <label htmlFor="name" className="profile__label">
               Имя

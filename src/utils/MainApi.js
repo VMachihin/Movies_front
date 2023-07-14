@@ -17,7 +17,7 @@ export function getUserInfo() {
 }
 
 export function editingProfile(userData) {
-  request(`${BASE_URL}/users/me`, {
+  return request(`${BASE_URL}/users/me`, {
     method: 'PATCH',
     headers: headers,
     body: JSON.stringify({
