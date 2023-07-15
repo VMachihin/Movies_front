@@ -8,7 +8,7 @@ export const headers = {
 };
 
 export function getAllMovies() {
-  return request(`${MOVIES_URL}beatfilm-movies`, { headers: headers });
+  return request(`${MOVIES_URL}/beatfilm-movies`, { headers: headers });
 }
 
 export function getSavedMovies() {
