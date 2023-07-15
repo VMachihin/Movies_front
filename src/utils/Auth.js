@@ -2,7 +2,7 @@ import { request } from './MainApi';
 import { BASE_URL } from './constants';
 
 export function register(name, email, password) {
-  return request(BASE_URL, {
+  return request(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

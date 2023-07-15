@@ -7,7 +7,7 @@ import { SHORT_MOVIE_DURATION } from '../../utils/constants';
 
 function Movies({ movies, savedMovies, onSaveMovie, onDeleteMovie }) {
   const [filtredMovies, setFiltredMovies] = React.useState([]);
-  const [searchRequest, setSearchRequest] = React.useState({});
+  const [searchRequest, setSearchRequest] = React.useState({ searchText: '', isShortMovieChecked: false });
   const foundMovies = localStorage.getItem('foundMovies');
   const reqMovies = localStorage.getItem('reqMovies');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -25,7 +25,6 @@ function Movies({ movies, savedMovies, onSaveMovie, onDeleteMovie }) {
   }, [reqMovies]);
 
   function handleFiltredMovies(stateSearchAndCkeckbox) {
-    console.log(stateSearchAndCkeckbox);
     setIsLoading(true);
 
     setTimeout(() => {
@@ -63,7 +62,7 @@ function Movies({ movies, savedMovies, onSaveMovie, onDeleteMovie }) {
       ) : filtredMovies.length ? (
         <MoviesCardList movies={filtredMovies} savedMovies={savedMovies} onSaveMovie={onSaveMovie} onDeleteMovie={onDeleteMovie} />
       ) : (
-        searchRequest && (
+        searchRequest.searchText && (
           <p className="movies__not-found" style={{ textAlign: 'center' }}>
             Ничего не найдено
           </p>
