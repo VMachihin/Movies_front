@@ -8,7 +8,11 @@ export const headers = {
 };
 
 export function getAllMovies() {
-  return request(`${MOVIES_URL}/beatfilm-movies`, { headers: headers });
+  return request(`${MOVIES_URL}/beatfilm-movies`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
 
 export function getSavedMovies() {

@@ -78,14 +78,18 @@ function App() {
 
   React.useEffect(() => {
     loggedIn &&
-      Promise.all([getUserInfo(), getAllMovies(), getSavedMovies()])
-        .then(([userData, moviesData, savedMoviesData]) => {
+      Promise.all([getUserInfo(), getSavedMovies()])
+        .then(([userData, savedMoviesData]) => {
           setCurrentUser(userData);
-          setMovies(moviesData);
           setSavedMovies(savedMoviesData);
           localStorage.setItem('savedMovies', JSON.stringify(savedMoviesData));
         })
         .catch(console.error);
+
+    loggedIn &&
+      getAllMovies().then((moviesData) => {
+        setMovies(moviesData);
+      });
   }, [loggedIn]);
 
   useEffect(() => {
