@@ -43,7 +43,7 @@ function App() {
   function handleRegister(name, email, password) {
     register(name, email, password)
       .then((res) => {
-        navigate('/movies', { replace: true });
+        handleAutorization(email, password);
       })
       .catch(console.error);
   }
