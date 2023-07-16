@@ -71,6 +71,12 @@ function Login({ onAuthoriz }) {
           <button type="submit" className={`sign__btn ${!isValid ? `sign__btn_disabled` : null}`} disabled={!isValid}>
             Войти
           </button>
+          <span className="sign__text">
+            Нет аккаунта?&nbsp;
+            <Link to="/signup" className="sign__linkSignIn">
+              Зарегистрироваться
+            </Link>
+          </span>
         </form>
       </div>
     </section>
