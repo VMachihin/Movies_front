@@ -60,7 +60,6 @@ function App() {
 
   // Авторизация
   function handleAutorization(email, password) {
-    console.log(email, password);
     auth
       .authorization(email, password)
       .then((data) => {
@@ -84,12 +83,7 @@ function App() {
             navigate(location.pathname);
           }
         })
-        .catch((error) => {
-          if (error.status === 401) {
-            localStorage.removeItem('jwt');
-          }
-          console.error();
-        });
+        .catch(console.error);
     }
   }, []);
 
@@ -126,6 +120,7 @@ function App() {
       })
       .catch((err) => {
         setIsResOk(false);
+        setIsProfileEditActive(false);
         console.err(err);
       });
   }

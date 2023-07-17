@@ -18,8 +18,6 @@ function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isR
     }
   }, [currentUser, setIsValid, setValues]);
 
-  // console.log(currentUser);
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -80,9 +78,9 @@ function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isR
           {isProfileEditActive ? (
             <button
               className={`profile__edit-save ${isProfileEditActive && `profile__edit-save_show`} ${
-                !isValid && `profile__edit-save_disabled`
+                !isValid || (values.name === currentUser.name && values.email === currentUser.email && `profile__edit-save_disabled`)
               }`}
-              disabled={!isValid}
+              disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email)}
             >
               Сохранить
             </button>
@@ -91,12 +89,11 @@ function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isR
               <button type="button" className="profile__edit" onClick={onEditProfileActive}>
                 Редактировать
               </button>
-
-              <Link className="profile__exit" onClick={onSignOut}>
-                Выйти из аккаунта
-              </Link>
             </>
           )}
+          <Link className="profile__exit" onClick={onSignOut}>
+            Выйти из аккаунта
+          </Link>
         </form>
       </div>
     </section>

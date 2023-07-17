@@ -38,7 +38,7 @@ export default class MainApi {
 
   saveMovie(movie) {
     return this._request(`${this._url}/movies`, {
-      headers: this.headers,
+      headers: this._headers,
       method: 'POST',
       body: JSON.stringify({
         country: movie.country,

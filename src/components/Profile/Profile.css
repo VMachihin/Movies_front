@@ -114,6 +114,7 @@
 
 .profile__edit-save_disabled {
   background: #f9f9f9;
+  color: #6f6d6d;
   cursor: inherit;
 }
 
