@@ -5,16 +5,18 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import { SHORT_MOVIE_DURATION } from '../../utils/constants.js';
 
 function SavedMovies({ savedMovies, onDeleteMovie }) {
-  const [filtredSaveMovies, setFiltredSaveMovies] = React.useState([]);
-  const [searchRequest, setSearchRequest] = React.useState({});
+  const [filtredMovies, setFiltredMovies] = React.useState([]);
+  const [searchRequest, setSearchRequest] = React.useState({ searchText: '', isShortMovieChecked: false });
   const foundSaveMovies = localStorage.getItem('foundSaveMovies');
   const reqSaveMovies = localStorage.getItem('reqSaveMovies');
 
   React.useEffect(() => {
-    if (foundSaveMovies) {
-      setFiltredSaveMovies(JSON.parse(foundSaveMovies));
+    if (foundSaveMovies > 0) {
+      setFiltredMovies(JSON.parse(foundSaveMovies));
+    } else {
+      setFiltredMovies(savedMovies);
     }
-  }, [foundSaveMovies]);
+  }, [foundSaveMovies, savedMovies, searchRequest]);
 
   React.useEffect(() => {
     if (reqSaveMovies) {
@@ -22,34 +24,40 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
     }
   }, [reqSaveMovies]);
 
-  function handleFiltredSaveMovies(stateSearchAndCkeckbox) {
-    let arrFiltredSaveMovies = [];
+  function handleFiltredMovies(stateSearchAndCkeckbox) {
+    let arrFiltredMovies = [];
 
     localStorage.setItem('reqSaveMovies', JSON.stringify(stateSearchAndCkeckbox));
 
+    console.log(stateSearchAndCkeckbox);
+
     if (stateSearchAndCkeckbox.isShortMovieChecked) {
-      arrFiltredSaveMovies = savedMovies.filter((item) => {
+      console.log('тру');
+      arrFiltredMovies = savedMovies.filter((item) => {
+        console.log(item);
         return item.duration <= SHORT_MOVIE_DURATION && item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase());
       });
 
-      setFiltredSaveMovies(arrFiltredSaveMovies);
+      setFiltredMovies(arrFiltredMovies);
 
-      localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredSaveMovies));
+      localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredMovies));
     } else if (!stateSearchAndCkeckbox.isShortMovieChecked) {
-      arrFiltredSaveMovies = savedMovies.filter((item) => {
+      arrFiltredMovies = savedMovies.filter((item) => {
         return item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase());
       });
 
-      setFiltredSaveMovies(arrFiltredSaveMovies);
-      localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredSaveMovies));
+      setFiltredMovies(arrFiltredMovies);
+      localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredMovies));
     }
   }
 
+  console.log(filtredMovies);
+
   return (
     <>
-      <SearchForm onFiltredMovies={handleFiltredSaveMovies} searchRequest={searchRequest} />
-      {filtredSaveMovies.length ? (
-        <MoviesCardList movies={filtredSaveMovies} savedMovies={savedMovies} onDeleteMovie={onDeleteMovie} />
+      <SearchForm onFiltredMovies={handleFiltredMovies} searchRequest={searchRequest} />
+      {filtredMovies.length ? (
+        <MoviesCardList movies={filtredMovies} savedMovies={savedMovies} onDeleteMovie={onDeleteMovie} />
       ) : (
         searchRequest && (
           <p className="movies__not-found" style={{ textAlign: 'center' }}>

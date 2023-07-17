@@ -159,7 +159,6 @@ function App() {
     // localStorage.removeItem('jwt');
     localStorage.clear();
   }
-
   return (
     <>
       <CurrentUserContext.Provider value={{ currentUser }}>

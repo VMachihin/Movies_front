@@ -9,7 +9,7 @@ function NotFound() {
       <h2 className="notFound__title">404</h2>
       <span className="notFound__subtitle">Страница не найдена</span>
 
-      <Link to="/sign-in" className="notFound__link">
+      <Link to="/signin" className="notFound__link">
         Назад
       </Link>
     </div>
