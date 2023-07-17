@@ -14,9 +14,10 @@ import NotFound from '../NotFound/NotFound';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-import { register, authorization, checkToken } from '../../utils/Auth';
-import { getUserInfo, editingProfile } from '../../utils/MainApi';
-import { getAllMovies, getSavedMovies, saveMovie, deleteMovie } from '../../utils/MoviesApi';
+import { auth } from '../../utils/Auth';
+import MainApi from '../../utils/MainApi';
+import { moviesApi } from '../../utils/MoviesApi';
+import { BASE_URL } from '../../utils/constants';
 
 import ProtectedRouteElement from '../../utils/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -39,9 +40,18 @@ function App() {
   const [isResOk, setIsResOk] = React.useState(false);
   const [isProfileEditActive, setIsProfileEditActive] = React.useState(false);
 
+  const mainApi = new MainApi({
+    url: BASE_URL,
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    },
+  });
+
   // Регистрация
   function handleRegister(name, email, password) {
-    register(name, email, password)
+    auth
+      .register(name, email, password)
       .then((res) => {
         handleAutorization(email, password);
       })
@@ -50,7 +60,9 @@ function App() {
 
   // Авторизация
   function handleAutorization(email, password) {
-    authorization(email, password)
+    console.log(email, password);
+    auth
+      .authorization(email, password)
       .then((data) => {
         if (data.token) {
           localStorage.setItem('jwt', data.token);
@@ -64,32 +76,40 @@ function App() {
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      checkToken(jwt)
+      auth
+        .checkToken(jwt)
         .then((res) => {
           if (res) {
             setloggedIn(true);
-
             navigate(location.pathname);
           }
         })
-        .catch(console.error);
+        .catch((error) => {
+          if (error.status === 401) {
+            localStorage.removeItem('jwt');
+          }
+          console.error();
+        });
     }
   }, []);
 
   React.useEffect(() => {
     loggedIn &&
-      Promise.all([getUserInfo(), getSavedMovies()])
-        .then(([userData, savedMoviesData]) => {
+      mainApi.getUserInfo().then(
+        (userData) => {
           setCurrentUser(userData);
+        },
+        [loggedIn]
+      );
+
+    loggedIn &&
+      Promise.all([mainApi.getSavedMovies(), moviesApi.getAllMovies()])
+        .then(([savedMoviesData, moviesData]) => {
           setSavedMovies(savedMoviesData);
+          setMovies(moviesData);
           localStorage.setItem('savedMovies', JSON.stringify(savedMoviesData));
         })
         .catch(console.error);
-
-    loggedIn &&
-      getAllMovies().then((moviesData) => {
-        setMovies(moviesData);
-      });
   }, [loggedIn]);
 
   useEffect(() => {
@@ -97,7 +117,8 @@ function App() {
   }, [savedMovies, loggedIn]);
 
   function handleEditUserInfo(newUserData) {
-    editingProfile(newUserData)
+    mainApi
+      .editingProfile(newUserData)
       .then((userData) => {
         setCurrentUser(userData);
         setIsResOk(true);
@@ -117,7 +138,8 @@ function App() {
     if (isSave) {
       handleDeleteMovie(savedMovie._id);
     } else {
-      saveMovie(movie)
+      mainApi
+        .saveMovie(movie)
         .then((res) => {
           setSavedMovies([res, ...savedMovies]);
         })
@@ -127,7 +149,8 @@ function App() {
 
   function handleDeleteMovie(id) {
     let newSavedMovies;
-    deleteMovie(id)
+    mainApi
+      .deleteMovie(id)
       .then((res) => {
         newSavedMovies = savedMovies.filter((movie) => movie._id !== id);
         setSavedMovies(newSavedMovies);

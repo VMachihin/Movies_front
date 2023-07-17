@@ -18,6 +18,8 @@ function Profile({ onEditUserInfo, onEditProfileActive, isProfileEditActive, isR
     }
   }, [currentUser, setIsValid, setValues]);
 
+  // console.log(currentUser);
+
   function handleSubmit(e) {
     e.preventDefault();
 

@@ -1,47 +1,34 @@
-import { request } from './MainApi';
+import { MOVIES_URL } from '../utils/constants';
 
-import { BASE_URL, MOVIES_URL } from './constants';
+export default class MoviesApi {
+  constructor({ url, header }) {
+    this._url = url;
+    this._headers = header;
+  }
 
-export const headers = {
-  'Content-Type': 'application/json',
-  authorization: `Bearer ${localStorage.getItem('jwt')}`,
-};
+  _checkResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Произошла ошибка: ${response.status}`);
+  }
 
-export function getAllMovies() {
-  return request(`${MOVIES_URL}/beatfilm-movies`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  _request(url, options) {
+    return fetch(url, options).then((res) => this._checkResponse(res));
+  }
+
+  getAllMovies() {
+    return this._request(`${this._url}/beatfilm-movies`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
 
-export function getSavedMovies() {
-  return request(`${BASE_URL}/movies`, { headers: headers });
-}
-
-export function saveMovie(movie) {
-  return request(`${BASE_URL}/movies`, {
-    headers: headers,
-    method: 'POST',
-    body: JSON.stringify({
-      country: movie.country,
-      director: movie.director,
-      duration: movie.duration,
-      year: movie.year,
-      description: movie.description,
-      image: `${MOVIES_URL}${movie.image.url}`,
-      trailerLink: movie.trailerLink,
-      thumbnail: `${MOVIES_URL}${movie.image.formats.thumbnail.url}`,
-      movieId: movie.id,
-      nameRU: movie.nameRU,
-      nameEN: movie.nameEN,
-    }),
-  });
-}
-
-export function deleteMovie(id) {
-  return request(`${BASE_URL}/movies/${id}`, {
-    method: 'DELETE',
-    headers: headers,
-  });
-}
+export const moviesApi = new MoviesApi({
+  url: `${MOVIES_URL}`,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
