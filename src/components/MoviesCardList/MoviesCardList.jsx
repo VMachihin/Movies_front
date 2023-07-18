@@ -4,6 +4,17 @@ import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import { useLocation } from 'react-router-dom';
 import useResize from '../../hooks/useResize';
 
+import {
+  laptopWidth,
+  tabletWidth,
+  mobileWidth,
+  numberCardsToShowLaptop,
+  numberCardsToShowTablet,
+  numberCardsToShowMobile,
+  quantityLoadingMoviesLaptop,
+  quantityLoadingMoviesTablet,
+} from '../../utils/constants';
+
 import './MoviesCardList.css';
 // const movies = [
 //   {
@@ -62,7 +73,8 @@ function MoviesCardList({ movies, savedMovies, onSaveMovie, onDeleteMovie }) {
   }, [movies]);
 
   const showMovies = React.useMemo(() => {
-    const sizeCount = size.width < 768 ? 5 : size.width < 1280 ? 8 : 12;
+    const sizeCount =
+      size.width < mobileWidth ? numberCardsToShowMobile : size.width < tabletWidth ? numberCardsToShowTablet : numberCardsToShowLaptop;
 
     return movies.slice(0, sizeCount + countShowMovies);
   }, [movies, countShowMovies, size]);
@@ -85,7 +97,7 @@ function MoviesCardList({ movies, savedMovies, onSaveMovie, onDeleteMovie }) {
           <button
             className="movie-library__btn"
             onClick={() => {
-              setCountShowMovies((item) => item + (size.width >= 1280 ? 3 : 2));
+              setCountShowMovies((item) => item + (size.width >= laptopWidth ? quantityLoadingMoviesLaptop : quantityLoadingMoviesTablet));
             }}
           >
             Ещё
