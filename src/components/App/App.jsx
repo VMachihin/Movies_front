@@ -209,7 +209,7 @@ function App() {
             <Route path="/signup" element={<Register onRegister={handleRegister} />} />
             <Route path="/signin" element={<Login onAuthoriz={handleAutorization} />} />
 
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound loggedIn={loggedIn} />} />
           </Routes>
         </main>
 

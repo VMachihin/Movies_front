@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './NotFound.css';
 
-function NotFound() {
+function NotFound({ loggedIn }) {
+  const navigate = useNavigate();
+  function handleBack() {
+    loggedIn ? navigate('/movies') : navigate('/');
+  }
   return (
     <div className="notFound">
       <h2 className="notFound__title">404</h2>
       <span className="notFound__subtitle">Страница не найдена</span>
 
-      <Link to="/signin" className="notFound__link">
+      <button className="notFound__btn" onClick={handleBack}>
         Назад
-      </Link>
+      </button>
     </div>
   );
 }

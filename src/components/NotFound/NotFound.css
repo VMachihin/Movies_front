@@ -26,20 +26,17 @@
   margin-bottom: 184px;
 }
 
-.notFound__link {
-  display: block;
-  text-decoration: none;
+.notFound__btn {
+  background-color: #ffffff;
+  border: none;
   color: #3456f3;
   font-size: 14px;
   line-height: 17px;
   transition: color 0.2s ease;
+  cursor: pointer;
 }
 
-.notFound__link:visited {
-  color: #3456f3;
-}
-
-.notFound__link:hover {
+.notFound__btn:hover {
   color: #2be080;
 }
 
