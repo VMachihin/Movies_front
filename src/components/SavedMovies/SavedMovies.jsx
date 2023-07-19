@@ -11,12 +11,12 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
   const reqSaveMovies = localStorage.getItem('reqSaveMovies');
 
   React.useEffect(() => {
-    if (foundSaveMovies > 0) {
+    if (foundSaveMovies) {
       setFiltredMovies(JSON.parse(foundSaveMovies));
     } else {
       setFiltredMovies(savedMovies);
     }
-  }, [foundSaveMovies, savedMovies, searchRequest]);
+  }, [foundSaveMovies]);
 
   React.useEffect(() => {
     if (reqSaveMovies) {
@@ -29,35 +29,27 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
 
     localStorage.setItem('reqSaveMovies', JSON.stringify(stateSearchAndCkeckbox));
 
-    console.log(stateSearchAndCkeckbox);
-
     if (stateSearchAndCkeckbox.isShortMovieChecked) {
-      console.log('тру');
-      arrFiltredMovies = savedMovies.filter((item) => {
-        console.log(item);
-        return item.duration <= SHORT_MOVIE_DURATION && item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase());
-      });
+      arrFiltredMovies = savedMovies.filter(
+        (item) =>
+          item.duration <= SHORT_MOVIE_DURATION && item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase())
+      );
 
       setFiltredMovies(arrFiltredMovies);
-
       localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredMovies));
     } else if (!stateSearchAndCkeckbox.isShortMovieChecked) {
-      arrFiltredMovies = savedMovies.filter((item) => {
-        return item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase());
-      });
+      arrFiltredMovies = savedMovies.filter((item) => item.nameRU.toLowerCase().includes(stateSearchAndCkeckbox.searchText.toLowerCase()));
 
       setFiltredMovies(arrFiltredMovies);
       localStorage.setItem('foundSaveMovies', JSON.stringify(arrFiltredMovies));
     }
   }
 
-  console.log(filtredMovies);
-
   return (
     <>
       <SearchForm onFiltredMovies={handleFiltredMovies} searchRequest={searchRequest} />
       {filtredMovies.length ? (
-        <MoviesCardList movies={filtredMovies} savedMovies={savedMovies} onDeleteMovie={onDeleteMovie} />
+        <MoviesCardList movies={filtredMovies} onDeleteMovie={onDeleteMovie} />
       ) : (
         searchRequest && (
           <p className="movies__not-found" style={{ textAlign: 'center' }}>
