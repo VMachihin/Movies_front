@@ -11,12 +11,12 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: color 0.3s ease-in-out;
 }
 
 .nav-auth__register-link:hover {
-  color: #2BE080;
+  color: #2be080;
 }
 
 .nav-auth__login-link {
@@ -27,7 +27,7 @@
   line-height: 16px;
   color: #000000;
   text-align: center;
-  background: #2BE080;
+  background: #2be080;
   width: 76px;
   height: 32px;
   border: none;
@@ -40,7 +40,7 @@
 
 .nav-auth__login-link:hover {
   transform: translateY(-3px);
-  box-shadow: 0px 5px 10px 2px #2BE080;
+  box-shadow: 0px 5px 10px 2px #2be080;
 }
 
 .nav-movies__wrapper_burger {
@@ -63,7 +63,7 @@
 .nav-movies {
   display: contents;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .nav-movies__link {
@@ -81,7 +81,7 @@
 }
 
 .nav-movies__link:hover {
-  color: #2BE080;
+  color: #2be080;
 }
 
 .nav-movies__link_active {
@@ -89,7 +89,7 @@
 }
 
 .nav-movies__link_main {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nav-movies__link_burger-active {
@@ -121,7 +121,7 @@
 }
 
 .profile-link__text_main {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .profile-link__route {
@@ -134,32 +134,29 @@
   border-radius: 6px;
   border: none;
   background: url('../../images/logo/profile_logo.svg') center center / 11px no-repeat;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   cursor: pointer;
   margin-left: 13px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .profile-link__route:hover {
-  box-shadow: 0px 5px 10px 2px #2BE080;
+  box-shadow: 0px 5px 10px 2px #2be080;
   transform: translateY(-2px);
 }
-
 
 .profile-link__route:visited {
   color: #000000;
 }
 
-@media(max-width: 560px) {
-
+@media (max-width: 560px) {
   .nav-movies__link_main,
   .nav-movies__link_burger {
     margin-bottom: 24px;
   }
 }
 
-@media(max-width: 510px) {
-
+@media (max-width: 510px) {
   .nav-auth__register-link,
   .nav-auth__login-link {
     font-size: 10px;

@@ -15,7 +15,7 @@ const useResize = () => {
   }, []);
 
   return {
-    width
+    width,
   };
 };
 

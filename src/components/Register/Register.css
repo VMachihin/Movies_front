@@ -4,16 +4,16 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .sign__linkSignIn {
   text-decoration: none;
-  color: #3456F3;
+  color: #3456f3;
 }
 
 .sign__linkSignIn:visited {
-  color: #3456F3;
+  color: #3456f3;
 }
 
 .input__text-error_api {

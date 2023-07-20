@@ -9,7 +9,7 @@ function BurgerMenu({ loggedIn, mainPage }) {
 
   function toggleBurger() {
     setIsOpen(!isOpen);
-  };
+  }
 
   // обработчик Escape
   React.useEffect(() => {
@@ -28,7 +28,6 @@ function BurgerMenu({ loggedIn, mainPage }) {
 
   return (
     <div className="burger">
-
       <div className="burger__btn" onClick={toggleBurger}>
         <span className={`burger__line ${mainPage ? 'burger__line_mainPage' : ''}`}></span>
         <span className={`burger__line ${mainPage ? 'burger__line_mainPage' : ''}`}></span>
@@ -38,13 +37,12 @@ function BurgerMenu({ loggedIn, mainPage }) {
       {isOpen && <div className="burger__overlay" onClick={toggleBurger}></div>}
 
       <div className={`burger__menu ${isOpen ? 'burger__menu_open' : ''}`}>
-
         <button className="burger__btn-close" onClick={toggleBurger}></button>
 
         <Navigation loggedIn={loggedIn} toggleBurger={toggleBurger} />
       </div>
-    </div>);
+    </div>
+  );
 }
-
 
 export default BurgerMenu;

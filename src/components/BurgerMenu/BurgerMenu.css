@@ -4,8 +4,8 @@
   cursor: pointer;
 }
 
-.burger__btn:hover>.burger__line {
-  background-color: #2BE080;
+.burger__btn:hover > .burger__line {
+  background-color: #2be080;
 }
 
 .burger__line {
@@ -18,7 +18,7 @@
 }
 
 .burger__line_mainPage {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .burger__line:last-child {
@@ -60,7 +60,7 @@
   align-self: end;
   width: 22px;
   height: 22px;
-  background: url('../../images/logo/close.svg')center center / cover no-repeat;
+  background: url('../../images/logo/close.svg') center center / cover no-repeat;
   border: none;
   cursor: pointer;
   transition: scale 0.3s ease;
@@ -71,7 +71,7 @@
   transform: scale(1.1);
 }
 
-@media(max-width: 560px) {
+@media (max-width: 560px) {
   .burger__menu {
     padding: 14px;
     width: 300px;

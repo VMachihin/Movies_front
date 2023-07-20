@@ -9,7 +9,7 @@
   display: block;
   width: 320px;
   height: 36px;
-  background: #F9F9F9;
+  background: #f9f9f9;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -20,10 +20,10 @@
 }
 
 .movie-library__btn:hover {
-  background: #2BE080;
+  background: #2be080;
 }
 
-@media(max-width: 672px) {
+@media (max-width: 672px) {
   .movie-library__list {
     padding: 40px 0 20px 0;
   }

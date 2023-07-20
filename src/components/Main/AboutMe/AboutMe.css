@@ -57,10 +57,10 @@
 }
 
 .aboutMe__link:hover {
-  color: #2BE080;
+  color: #2be080;
 }
 
-@media(max-width: 1158px) {
+@media (max-width: 1158px) {
   .aboutMe {
     padding: 90px 0;
   }
@@ -70,7 +70,7 @@
   }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .aboutMe__title {
     text-align: start;
     font-size: 40px;
@@ -95,7 +95,7 @@
   }
 }
 
-@media(max-width: 672px) {
+@media (max-width: 672px) {
   .aboutMe {
     padding: 70px 0;
   }

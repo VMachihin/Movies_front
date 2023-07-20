@@ -19,7 +19,8 @@
   flex-direction: column;
 }
 
-.input__wrapper {
+.profile__input-wrapper {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,34 +36,86 @@
   width: 85%;
   border: none;
   outline: none;
-  direction: rtl;
+  text-align: right;
+  font-size: 11px;
 }
 
 .profile__input::placeholder {
-  font-weight: 500;
   font-size: 11px;
   line-height: 13px;
   color: #000000;
+  opacity: 0.7;
+}
+
+.profile__input:disabled {
+  background-color: #ffffff;
 }
 
 .line_form {
-  background: #E8E8E8;
+  background: #e8e8e8;
   margin: 16px 0;
+}
+
+.profile__input-textError {
+  color: #ee3465;
+  font-size: 10px;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 16px;
+  text-align: end;
+  transition: opacity 0.3s ease;
+}
+
+.profile__input-textError_active {
+  opacity: 1;
+}
+
+.profile__text-statusReq {
+  opacity: 0;
+  font-size: 11px;
+  color: #2be080;
+  margin: 220px 0 20px 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__text-statusReq_active {
+  opacity: 1;
 }
 
 .profile__edit {
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: none;
   cursor: pointer;
-  margin: 220px 0 0 0;
   transition: color 0.3s ease;
 }
 
 .profile__edit:hover {
-  color: #2BE080;
+  color: #2be080;
+}
+
+.profile__edit-save {
+  width: 100%;
+  height: 45px;
+  border-radius: 3px;
+  color: #ffffff;
+  background: #3456f3;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.profile__edit-save:hover {
+  opacity: 0.8;
+}
+
+.profile__edit-save_disabled {
+  background: #f9f9f9;
+  color: #6f6d6d;
+  cursor: inherit;
 }
 
 .profile__exit {
@@ -70,16 +123,16 @@
   font-size: 13px;
   line-height: 16px;
   text-decoration: none;
-  color: #FF3055;
+  color: #ff3055;
   margin: 16px 0 0 0;
   transition: text-shadow 0.3s ease;
 }
 
 .profile__exit:hover {
-  text-shadow: #FF3055 1px 0 10px;
+  text-shadow: #ff3055 1px 0 10px;
 }
 
-@media(max-width:500px) {
+@media (max-width: 500px) {
   .profile__form {
     width: 100%;
   }

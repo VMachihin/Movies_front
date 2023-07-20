@@ -70,7 +70,7 @@
 
 .project-stat__back {
   height: 36px;
-  background-color: #2BE080;
+  background-color: #2be080;
   text-align: center;
   padding: 9px 0;
   box-sizing: border-box;
@@ -79,14 +79,14 @@
 
 .project-stat__front {
   height: 36px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   text-align: center;
   padding: 9px 0;
   box-sizing: border-box;
   margin-bottom: 14px;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .aboutProject {
     padding: 90px 0;
   }
@@ -106,7 +106,7 @@
   }
 }
 
-@media(max-width: 672px) {
+@media (max-width: 672px) {
   .aboutProject__title {
     font-size: 15px;
     line-height: 20px;
@@ -126,7 +126,7 @@
   }
 }
 
-@media(max-width: 410px) {
+@media (max-width: 410px) {
   .aboutProject__title {
     font-size: 12px;
     line-height: 15px;

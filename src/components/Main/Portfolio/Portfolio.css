@@ -9,7 +9,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   mix-blend-mode: normal;
   margin-bottom: 50px;
 }
@@ -43,15 +43,15 @@
 }
 
 .portfolio__link:hover {
-  color: #2BE080;
+  color: #2be080;
 }
 
 .line_portfolio {
   margin: 19px 0 20px 0;
-  background: #E8E8E8;
+  background: #e8e8e8;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .portfolio {
     padding: 70px 0;
   }
@@ -66,8 +66,7 @@
   }
 }
 
-@media(max-width: 672px) {
-
+@media (max-width: 672px) {
   .portfolio__link {
     font-size: 18px;
     line-height: 28px;

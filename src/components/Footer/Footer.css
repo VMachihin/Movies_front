@@ -11,12 +11,12 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #A0A0A0;
+  color: #a0a0a0;
   margin: 0 auto 20px;
 }
 
 .line_footer {
-  background: #E8E8E8;
+  background: #e8e8e8;
   margin-bottom: 20px;
 }
 
@@ -56,17 +56,16 @@
 }
 
 .footer__link:hover {
-  color: #2BE080;
+  color: #2be080;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .year {
     font-size: 13px;
   }
 }
 
-@media(max-width: 672px) {
-
+@media (max-width: 672px) {
   .footer__title,
   .footer__link {
     font-size: 13px;

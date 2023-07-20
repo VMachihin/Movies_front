@@ -19,18 +19,18 @@ function Header({ loggedIn }) {
       <div className="container">
         <div className="header__wrapper">
           <Link to="/" className="main-logo">
-            <img src={logo} alt='главный логотип' />
+            <img src={logo} alt="главный логотип" />
           </Link>
 
-          {loggedIn & (resize.width <= 768) ?
-            <BurgerMenu loggedIn={loggedIn} mainPage={mainPage} /> :
+          {loggedIn & (resize.width <= 768) ? (
+            <BurgerMenu loggedIn={loggedIn} mainPage={mainPage} />
+          ) : (
             <Navigation loggedIn={loggedIn} mainPage={mainPage} />
-          }
-
+          )}
         </div>
       </div>
-    </header >
-  )
+    </header>
+  );
 }
 
 export default Header;

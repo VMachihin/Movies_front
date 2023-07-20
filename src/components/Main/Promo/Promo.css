@@ -16,7 +16,7 @@
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0 0 36px 0;
   max-width: 640px;
 }
@@ -27,13 +27,12 @@
   line-height: 16px;
   mix-blend-mode: normal;
   opacity: 0.5;
-  color: #FFFFFF;
+  color: #ffffff;
   max-width: 310px;
   margin: 0;
 }
 
-@media(max-width: 1158px) {
-
+@media (max-width: 1158px) {
   .promo {
     padding: 25px 0 25px 0;
   }
@@ -45,7 +44,7 @@
   }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .promo {
     padding: 140px 0 0 0;
   }
@@ -74,7 +73,7 @@
   }
 }
 
-@media(max-width: 672px) {
+@media (max-width: 672px) {
   .promo {
     padding: 70px 0 80px 0;
   }

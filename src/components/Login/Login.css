@@ -24,14 +24,14 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .sign__input {
   display: block;
   width: 100%;
   min-height: 46px;
-  background: #F9F9F9;
+  background: #f9f9f9;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -41,22 +41,22 @@
 }
 
 .sign__input:focus {
-  outline: solid #2BE080;
+  outline: solid #2be080;
 }
 
 .sign__input_password {
-  color: #FF004C;
+  color: #ff004c;
 }
 
 .sign__btn {
-  background: #3456F3;
+  background: #3456f3;
   border-radius: 3px;
   width: 100%;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   border: none;
   padding: 15px 0;
@@ -65,16 +65,16 @@
 }
 
 .sign__btn:hover {
-  background: #2BE080;
+  background: #2be080;
 }
 
 .sign__btn_disabled {
-  background: #F9F9F9;
+  background: #f9f9f9;
   cursor: inherit;
 }
 
 .sign__btn_disabled:hover {
-  background: #F9F9F9;
+  background: #f9f9f9;
 }
 
 .input__text-error {
@@ -85,5 +85,5 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 13px;
-  color: #FF004C;
+  color: #ff004c;
 }
