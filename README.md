@@ -4,5 +4,6 @@
 
 ## [Frontend](https://movies.lib.nomoredomains.rocks.vitmach.ru)
 
+![Часть скриншота главной страницы](/1.jpg)
 
 
