@@ -4,6 +4,6 @@
 
 ## [Frontend](https://movies.lib.nomoredomains.rocks.vitmach.ru)
 
-[1]: ((https://disk.yandex.ru/i/Ty8xPZdNE-e1ow)https://disk.yandex.ru/i/Ty8xPZdNE-e1ow)
+![Иллюстрация к проекту] (https://github.com/VMachihin/movies-explorer-frontend/blob/bc91176546868aea842efecd813c3d8f35dc99aa/1.jpg)
 
 
