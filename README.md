@@ -4,8 +4,6 @@
 
 ## [Frontend](https://movies.lib.nomoredomains.rocks.vitmach.ru)
 
-![Одна собака][1]
-
 [1]: ((https://disk.yandex.ru/i/Ty8xPZdNE-e1ow)https://disk.yandex.ru/i/Ty8xPZdNE-e1ow)
 
 
