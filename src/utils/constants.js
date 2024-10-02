@@ -1,4 +1,4 @@
-const BASE_URL = "api.movies.vitmach.ru";
+const BASE_URL = "https://api.movies.vitmach.ru";
 const MOVIES_URL = "https://api.nomoreparties.co";
 const SHORT_MOVIE_DURATION = 40;
 
